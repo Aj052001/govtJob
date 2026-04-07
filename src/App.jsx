@@ -1,15 +1,26 @@
-import React from 'react'
+import { Routes, Route } from "react-router-dom";
+import Header from "./Header";
+import Home from "./Component/Home";
+import Rank from "./Component/Rank";
+import Books from "./Component/Books";
+import Notes from "./Component/Notes";
+import Typing from "./Component/Typing";
+import MockTest from "./Component/MockTest";
 
 function App() {
   return (
     <>
-    <div className="flex items-center justify-center h-screen bg-gray-400">
-  <div className="bg-white px-6 py-4 rounded-2xl shadow-lg text-xl font-semibold text-gray-800">
-    Hello World
-  </div>
-</div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/rank" element={<Rank />} />
+        <Route path="/books" element={<Books />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/typing" element={<Typing />} />
+        <Route path="/mock-test" element={<MockTest />} />
+      </Routes>
     </>
-  )
+  );
 }
-   
+
 export default App
