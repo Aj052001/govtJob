@@ -1,8 +1,8 @@
 import React from "react";
-import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User, MapPin, Info, ShieldCheck, Clock,} from "lucide-react";
+import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User, MapPin, Info, ShieldCheck, Clock,} from "lucide-react" 
 
 const Home = () => {
-
+  
   const jobs = [
     {
       title: "Assistant Section Officer",
@@ -12,7 +12,7 @@ const Home = () => {
       location: "New Delhi, India",
       pay: "Level 7",
       status: "Eligible",
-      icon: <Info className="text-blue-700" />,
+      icon: <Info className="text-blue-700" />,         
       border: "border-l-4 border-blue-700",
     },
     {
@@ -41,7 +41,7 @@ const Home = () => {
     <div className="bg-[#f5f7fb] min-h-screen p-4 sm:p-6 flex justify-center">
       <div className="w-full max-w-7xl flex flex-col lg:flex-row gap-6">
 
-      
+        {/* ================= LEFT ================= */}
         <div className="w-full lg:w-[260px] space-y-5">
 
          
@@ -54,7 +54,7 @@ const Home = () => {
               />
             </div>
 
-            <div className="mt-10 text-center px-4 pb-5">
+            <div className="mt-10 text-center px-4 pb-5 sticky">
               <h2 className="font-semibold text-gray-900">Aryan Sharma</h2>
               <p className="text-xs text-gray-500">
                 Master's in Computer Application
@@ -100,7 +100,7 @@ const Home = () => {
           </div>
         </div>
 
-      
+        {/* ================= CENTER ================= */}
         <div className="flex-1 space-y-5">
 
         
@@ -201,7 +201,7 @@ const Home = () => {
           ))}
         </div>
 
-       
+        {/* ================= RIGHT ================= */}
         <div className="w-full lg:w-[280px] space-y-5">
 
      
