@@ -166,7 +166,7 @@ const LessonSystem = () => {
             <button onClick={() => setCurrentId(null)} className="px-4 py-2 rounded-xl border border-green-200 bg-white text-green-700 font-semibold text-sm hover:bg-green-50 transition">
               Back to Lessons
             </button>
-            {LESSONS.find((l) => l.id === lesson.id + 1) && (
+            {lessons.find((l) => l.id === lesson.id + 1) && (
               <button onClick={() => setCurrentId(lesson.id + 1)} className="px-4 py-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm hover:opacity-90 transition shadow-sm">
                 Next Lesson →
               </button>
