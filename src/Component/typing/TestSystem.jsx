@@ -275,16 +275,7 @@ export default function TestSystem() {
           <p className="text-base leading-8 text-gray-700 select-none" style={{ letterSpacing: "0.2px" }}>{text}</p>
         </div>
 
-        {/* Progress */}
-        <div className="bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-sm">
-          <div className="flex justify-between text-xs text-gray-500 mb-2">
-            <span>Progress</span>
-            <span className="font-bold text-gray-900">{typedWordCount} / {passageWords.length} words</span>
-          </div>
-          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-            <div className="h-full rounded-full transition-all duration-300" style={{ width: `${progress}%`, background: progress === 100 ? "#10b981" : "linear-gradient(to right, #2563eb, #6366f1)" }} />
-          </div>
-        </div>
+        
 
         {/* Textarea */}
         <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
