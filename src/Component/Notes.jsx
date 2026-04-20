@@ -150,7 +150,7 @@ export default function Notes() {
         </div>
 
         <nav className="flex-1 p-2">
-          {SUBJECTS.map(({ id, label, Icon }) => {
+          {SUBJECTS.map(({ id, label ,Icon  }) => {
             const isActive = id === activeSubjectId;
             return (
               <button

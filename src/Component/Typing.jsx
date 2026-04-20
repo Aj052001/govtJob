@@ -113,7 +113,9 @@ export default function Typing() {
       setCopied(true);
       clearTimeout(copyTimeoutRef.current);
       copyTimeoutRef.current = setTimeout(() => setCopied(false), 1400);
-    } catch {}
+    } catch {
+      return;
+    }
   }
 
   function handleKeyDown(e) {

@@ -14,6 +14,37 @@ const Home = () => {
       status: "Eligible",
       icon: <Info className="text-blue-700" />,         
       border: "border-l-4 border-blue-700",
+    },  
+    {
+      title: "Intelligence Officer",
+      org: "Intelligence Bureau (IB)",  
+      date: "Nov 15, 2023",
+      age: "Upto 27 Years",
+      status: "Eligible",
+      icon: <ShieldCheck className="text-blue-700" />,
+      note: "Requires specialized verification",
+      border: "border-l-4 border-blue-700",
+    },
+    {
+      title: "Section Engineer",
+      org: "Indian Railways (RRB)",
+      date: "Dec 05, 2023",
+      age: "18 - 33 Years",
+      status: "Checking Eligibility",
+      icon: <Info className="text-blue-700" />,
+      statusStyle: "bg-gray-200 text-gray-600",
+      note: "Updated 2 hours ago",
+    },
+    {
+      title: "Assistant Section Officer",
+      org: "Staff Selection Commission (SSC)",
+      date: "Oct 24, 2023",
+      age: "18 - 30 Years",
+      location: "New Delhi, India",
+      pay: "Level 7",
+      status: "Eligible",
+      icon: <Info className="text-blue-700" />,         
+      border: "border-l-4 border-blue-700",
     },
     {
       title: "Intelligence Officer",
@@ -44,7 +75,7 @@ const Home = () => {
         {/* ================= LEFT ================= */}
         <div className="w-full lg:w-[260px] space-y-5">
 
-         
+          
           <div className="bg-white rounded-2xl shadow-sm border overflow-hidden">
             <div className="h-20 bg-blue-700 relative">
               <img
@@ -55,7 +86,7 @@ const Home = () => {
             </div>
 
             <div className="mt-10 text-center px-4 pb-5 sticky">
-              <h2 className="font-semibold text-gray-900">Aryan Sharma</h2>
+              <h2 className="font-semibold text-gray-900">Aryan Sharma</h2>  
               <p className="text-xs text-gray-500">
                 Master's in Computer Application
               </p>
@@ -63,7 +94,7 @@ const Home = () => {
               <button className="mt-3 w-full border border-blue-600 text-blue-600 py-2 rounded-lg text-sm font-semibold hover:bg-blue-50 transition">
                 View Full Profile
               </button>
-            </div>
+            </div>   
 
             <div className="border-t px-4 py-3 text-sm space-y-2">
               <div className="flex justify-between text-gray-600">
@@ -118,7 +149,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-
+   
     
           {jobs.map((job, i) => (
             <div
@@ -193,7 +224,7 @@ const Home = () => {
                   2k+
                 </div>
 
-                <button className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 w-full sm:w-auto">
+      <button className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 w-full sm:w-auto">
                   Apply Now
                 </button>
               </div>
@@ -239,7 +270,7 @@ const Home = () => {
                 </div>
               </div>
             ))}
-
+                               
             <button className="text-blue-600 text-xs font-bold uppercase">
               View All Notifications
             </button>
@@ -258,7 +289,7 @@ const Home = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 p-3 bg-gray-100 rounded-lg mb-2 hover:bg-gray-200 transition"
+           className="flex items-center gap-3 p-3 bg-gray-100 rounded-lg mb-2 hover:bg-gray-200 transition"
               >
                 {item.icon}
                 <span className="text-sm font-medium text-gray-700">
