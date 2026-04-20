@@ -1,8 +1,10 @@
 import React from "react";
 import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User, MapPin, Info, ShieldCheck, Clock,} from "lucide-react" 
+import { useApp } from "../context/AppContext";
 
 const Home = () => {
   
+<<<<<<< HEAD
   const jobs = [
     {
       title: "Assistant Section Officer",
@@ -67,6 +69,9 @@ const Home = () => {
       note: "Updated 2 hours ago",
     },
   ] 
+=======
+   const { user, jobs, notifications} = useApp();
+>>>>>>> 8c7d15e80d9cb7d08244ffee0befe90ee1efe055
 
   return (
     <div className="bg-[#f5f7fb] min-h-screen p-4 sm:p-6 flex justify-center">
@@ -77,18 +82,22 @@ const Home = () => {
 
           
           <div className="bg-white rounded-2xl shadow-sm border overflow-hidden">
-            <div className="h-20 bg-blue-700 relative">
+            <div  className="h-20 bg-blue-700 relative">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS6xF72LSS714ihYtTOD3xjbXJAbhb5pUQDg&s"
+                src={user.avatar}
                 alt="profile"
                 className="w-16 h-16 rounded-full border-4 border-white absolute -bottom-8 left-1/2 -translate-x-1/2"
               />
             </div>
 
             <div className="mt-10 text-center px-4 pb-5 sticky">
+<<<<<<< HEAD
               <h2 className="font-semibold text-gray-900">Aryan Sharma</h2>  
+=======
+              <h2 className="font-semibold text-gray-900">{user.name}</h2>
+>>>>>>> 8c7d15e80d9cb7d08244ffee0befe90ee1efe055
               <p className="text-xs text-gray-500">
-                Master's in Computer Application
+                {user.education}
               </p>
 
               <button className="mt-3 w-full border border-blue-600 text-blue-600 py-2 rounded-lg text-sm font-semibold hover:bg-blue-50 transition">
@@ -99,14 +108,15 @@ const Home = () => {
             <div className="border-t px-4 py-3 text-sm space-y-2">
               <div className="flex justify-between text-gray-600">
                 <span>Eligible jobs count</span>
-                <span className="text-blue-700 font-bold">24</span>
+                <span className="text-blue-700 font-bold">{user.eligibleCount}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Saved jobs</span>
-                <span className="text-blue-700 font-bold">12</span>
+                <span className="text-blue-700 font-bold">{user.savedCount}</span>
               </div>
             </div>
           </div>
+
 
           <div className="bg-white rounded-2xl p-2 shadow-sm border">
             {[
@@ -241,23 +251,7 @@ const Home = () => {
               Notification
             </h3>
 
-            {[
-              {
-                color: "bg-blue-600",
-                title: "New job alerts",
-                desc: "UPSC Civil Services 2024 notification is now out.",
-              },
-              {
-                color: "bg-red-500",
-                title: "Last date reminders",
-                desc: "SSC CGL application ends in 48 hours.",
-              },
-              {
-                color: "bg-gray-400",
-                title: "Recent activity",
-                desc: "Your mock test result is available.",
-              },
-            ].map((item, i) => (
+            {notifications.map((item, i) => (
               <div key={i} className="flex gap-3 mb-4">
                 <div className={`w-2 h-2 mt-2 rounded-full ${item.color}`}></div>
                 <div>
