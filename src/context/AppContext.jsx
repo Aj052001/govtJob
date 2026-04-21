@@ -66,13 +66,13 @@ const initialLessons = [
     id: 1,
     title: "Home Row Basics",
     focus: "asdf jkl;",
-    text: "asdf jkl asdf jkl asdf jkl asdf jkl asdf jkl asdf jkl",
+    text: "asdf jkl asdf jkl asdf jkl asdf jkl asdf jkl asdf jkl jkl jkl jkl jkl jkl jklkjkl jklj kkk lll asdf jkl; jkl; kl; jkl;",
   },
   {
     id: 2,
     title: "Home Row Words",
     focus: "asdf jkl",
-    text: "dad sad lad ask had jak fall flask salad jall salsa",
+    text: "dad sad lad ask had jak fall  hafjhfsgffur hdagguaid gusdi fasdif ufhsido fhsudf hsdufhsdgyf fusdafguiasd fhfusdfh dufhsojifs dfsdhfushf ffhgsduifoh f uidhkjnfa sd  iodfj asf dufh au fauhfa jffhasfu oaf sahfsofj sfsdufh feffyiu fisdhfudf  flask salad jall salsa",
   },
   {
     id: 3,
