@@ -2,9 +2,18 @@ import React from "react";
 import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User, MapPin, Info, ShieldCheck, Clock,} from "lucide-react" 
 import { useApp } from "../context/AppContext";
 
-const Home = () => {
+const Home = ({ searchQuery }) => {
   
    const { user, jobs, notifications} = useApp();
+
+  // Filter jobs based on search query
+  const filteredJobs = jobs.filter((job) =>
+    job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    job.org.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    job.location?.toLowerCase().includes(searchQuery.toLowerCase())
+  )  
+
+  const displayJobs = searchQuery ? filteredJobs : jobs;
 
   return (
     <div className="bg-[#f5f7fb] min-h-screen">
@@ -73,7 +82,7 @@ const Home = () => {
 
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-white px-5 py-3 rounded-xl border">
             <h2 className="font-semibold text-gray-900">
-              Recommended for you
+              {searchQuery ? `Search Results for "${searchQuery}"` : "Recommended for you"}
             </h2>
 
             <div className="flex bg-gray-200 rounded-full p-1 text-xs font-bold w-fit">
@@ -86,80 +95,86 @@ const Home = () => {
             </div>
           </div>
 
-          {jobs.map((job, i) => (
-            <div
-              key={i}
-              className={`bg-white p-5 rounded-2xl shadow-sm border border-gray-200 ${job.border || ""}`}
-            >
-              <div className="flex justify-between items-start">
-                <div className="flex gap-4">
-                  <div className="p-3 bg-gray-100 rounded-lg border">
-                    {job.icon}
+          {displayJobs.length > 0 ? (
+            displayJobs.map((job, i) => (
+              <div
+                key={i}
+                className={`bg-white p-5 rounded-2xl shadow-sm border border-gray-200 ${job.border || ""}`}
+              >
+                <div className="flex justify-between items-start">
+                  <div className="flex gap-4">
+                    <div className="p-3 bg-gray-100 rounded-lg border">
+                      {job.icon}
+                    </div>
+
+                    <div>
+                      <h3 className="font-semibold text-lg text-gray-900">
+                        {job.title}
+                      </h3>
+                      <p className="text-sm text-gray-500">
+                        {job.org}
+                      </p>
+                    </div>
                   </div>
 
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900">
-                      {job.title}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      {job.org}
-                    </p>
-                  </div>
+                  <span
+                    className={`text-xs px-3 py-1 rounded-full font-bold ${
+                      job.statusStyle || "bg-green-100 text-green-700"
+                    }`}
+                  >
+                    {job.status}
+                  </span>
                 </div>
 
-                <span
-                  className={`text-xs px-3 py-1 rounded-full font-bold ${
-                    job.statusStyle || "bg-green-100 text-green-700"
-                  }`}
-                >
-                  {job.status}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 mt-4 text-sm text-gray-600">
-                <div className="flex gap-2 items-center">
-                  <Calendar size={14} className="text-gray-400" />
-                  Last Date: <b>{job.date}</b>
-                </div>
-
-                <div className="flex gap-2 items-center">
-                  <User size={14} className="text-gray-400" />
-                  Age Limit: <b>{job.age}</b>
-                </div>
-
-                {job.location && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 mt-4 text-sm text-gray-600">
                   <div className="flex gap-2 items-center">
-                    <MapPin size={14} className="text-gray-400" />
-                    Location: <b>{job.location}</b>
+                    <Calendar size={14} className="text-gray-400" />
+                    Last Date: <b>{job.date}</b>
                   </div>
+
+                  <div className="flex gap-2 items-center">
+                    <User size={14} className="text-gray-400" />
+                    Age Limit: <b>{job.age}</b>
+                  </div>
+
+                  {job.location && (
+                    <div className="flex gap-2 items-center">
+                      <MapPin size={14} className="text-gray-400" />
+                      Location: <b>{job.location}</b>
+                    </div>
+                  )}
+
+                  {job.pay && (
+                    <div className="flex gap-2 items-center">
+                      💰 Pay Level: <b>{job.pay}</b>
+                    </div>
+                  )}
+                </div>
+
+                {job.note && (
+                  <p className="text-xs text-gray-400 mt-3 mb-3">
+                    {job.note}
+                  </p>
                 )}
 
-                {job.pay && (
-                  <div className="flex gap-2 items-center">
-                    💰 Pay Level: <b>{job.pay}</b>
+                <div className="border-t my-3"></div>
+
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                  <div className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full w-fit">
+                    2k+
                   </div>
-                )}
-              </div>
 
-              {job.note && (
-                <p className="text-xs text-gray-400 mt-3 mb-3">
-                  {job.note}
-                </p>
-              )}
-
-              <div className="border-t my-3"></div>
-
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                <div className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full w-fit">
-                  2k+
+                  <button className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 w-full sm:w-auto">
+                    Apply Now
+                  </button>
                 </div>
-
-                <button className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 w-full sm:w-auto">
-                  Apply Now
-                </button>
               </div>
+            ))
+          ) : (
+            <div className="bg-white p-8 rounded-2xl shadow-sm border text-center">
+              <p className="text-gray-500 font-semibold">No jobs found matching "{searchQuery}"</p>
             </div>
-          ))}
+          )}
         </div>
 
         {/* ================= RIGHT (FIXED) ================= */}
@@ -228,5 +243,5 @@ const Home = () => {
     </div>
   ) 
 } 
-
+     
 export default Home

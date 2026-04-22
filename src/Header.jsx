@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom" 
 import { Search, Bell, Settings, Menu, X } from "lucide-react" 
 
-const Header = () => {
-  const [open, setOpen] = useState(false) 
+const Header = ({ onSearch }) => {
+  const [open, setOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const handleSearch = (value) => {
+    setSearchQuery(value)
+    onSearch(value)
+  }
 
   return (
     <header className="w-full bg-white shadow-md sticky top-0 z-10">
@@ -29,6 +35,8 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
               className="bg-transparent outline-none px-2 text-sm"
             />
           </div>
@@ -60,6 +68,8 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
               className="bg-transparent outline-none px-2 text-sm w-full"
             />
           </div>
@@ -79,4 +89,4 @@ const Header = () => {
   ) 
 } 
 
-export default Header 
+export default Header
