@@ -46,6 +46,30 @@ const initialJobs = [
     note: "Updated 2 hours ago",
     saved: false,
   },
+  
+  {
+    id: 4,
+    title: "Section Engineer",
+    org: "Indian Railways (RRB)",
+    date: "Dec 05, 2023",
+    age: "18 - 33 Years",
+    status: "Checking Eligibility",
+    statusStyle: "bg-gray-200 text-gray-600",
+    note: "Updated 2 hours ago",
+    saved: false,
+  },
+  
+  {
+    id: 5,
+    title: "Section Engineer",
+    org: "Indian Railways (RRB)",
+    date: "Dec 05, 2023",
+    age: "18 - 33 Years",
+    status: "Checking Eligibility",
+    statusStyle: "bg-gray-200 text-gray-600",
+    note: "Updated 2 hours ago",
+    saved: false,
+  },
 ];
 
 const initialNotifications = [
