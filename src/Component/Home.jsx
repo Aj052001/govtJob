@@ -1,5 +1,5 @@
 import React from "react";
-import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User, MapPin, Info, ShieldCheck, Clock,} from "lucide-react" 
+import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User, MapPin, Info, ShieldCheck, Clock, Heart, MessageCircle, Share2} from "lucide-react" 
 import { useApp } from "../context/AppContext";
 
 const Home = ({ searchQuery }) => {
@@ -12,7 +12,7 @@ const Home = ({ searchQuery }) => {
     job.org.toLowerCase().includes(searchQuery.toLowerCase()) ||
     job.location?.toLowerCase().includes(searchQuery.toLowerCase())
   )  
-
+          
   const displayJobs = searchQuery ? filteredJobs : jobs;
 
   return (
@@ -159,12 +159,23 @@ const Home = ({ searchQuery }) => {
 
                 <div className="border-t my-3"></div>
 
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                  <div className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full w-fit">
-                    2k+
+                <div className="flex justify-between items-center gap-3">
+                  <div className="flex gap-4">
+                    <button className="flex items-center gap-2 text-gray-600 hover:text-red-600 transition">
+                      <Heart size={18} />
+                      <span className="text-sm font-medium">Like</span>
+                    </button>
+                    <button className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition">
+                      <MessageCircle size={18} />
+                      <span className="text-sm font-medium">Comment</span>
+                    </button>
+                    <button className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition">
+                      <Share2 size={18} />
+                      <span className="text-sm font-medium">Share</span>
+                    </button>
                   </div>
 
-                  <button className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 w-full sm:w-auto">
+                  <button className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800">
                     Apply Now
                   </button>
                 </div>
