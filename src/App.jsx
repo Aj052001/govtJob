@@ -10,7 +10,7 @@ import MockTest from "./Component/MockTest";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-
+  
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
@@ -29,5 +29,5 @@ function App() {
     </>
   );
 }
-
+ 
 export default App

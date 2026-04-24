@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User, MapPin, Info, ShieldCheck, Clock, Heart, MessageCircle, Share2} from "lucide-react" 
 import { useApp } from "../context/AppContext";
+import JobDetailModal from "./JobDetailModal";
 
 const Home = ({ searchQuery }) => {
   
@@ -14,6 +15,7 @@ const Home = ({ searchQuery }) => {
   )  
           
   const displayJobs = searchQuery ? filteredJobs : jobs;
+  const [selectedJob, setSelectedJob] = useState(null);
 
   return (
     <div className="bg-[#f5f7fb] min-h-screen">
@@ -99,7 +101,8 @@ const Home = ({ searchQuery }) => {
             displayJobs.map((job, i) => (
               <div
                 key={i}
-                className={`bg-white p-5 rounded-2xl shadow-sm border border-gray-200 ${job.border || ""}`}
+                onClick={() => setSelectedJob(job)}
+                className={`bg-white p-5 rounded-2xl shadow-sm border border-gray-200 cursor-pointer hover:shadow-md transition-shadow ${job.border || ""}`}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex gap-4">
@@ -175,7 +178,10 @@ const Home = ({ searchQuery }) => {
                     </button>
                   </div>
 
-                  <button className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setSelectedJob(job); }}
+                    className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800"
+                  >
                     Apply Now
                   </button>
                 </div>
@@ -251,6 +257,8 @@ const Home = ({ searchQuery }) => {
         </div>
 
       </div>
+
+      <JobDetailModal job={selectedJob} onClose={() => setSelectedJob(null)} />
     </div>
   ) 
 } 
