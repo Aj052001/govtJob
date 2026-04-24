@@ -44,6 +44,7 @@ const initialJobs = [
     status: "Checking Eligibility",
     statusStyle: "bg-gray-200 text-gray-600",
     note: "Updated 2 hours ago",
+    border: "border-l-4 border-blue-700",
     saved: false,
   },
   
@@ -56,6 +57,7 @@ const initialJobs = [
     status: "Checking Eligibility",
     statusStyle: "bg-gray-200 text-gray-600",
     note: "Updated 2 hours ago",
+    border: "border-l-4 border-blue-700",
     saved: false,
   },
   
@@ -68,6 +70,7 @@ const initialJobs = [
     status: "Checking Eligibility",
     statusStyle: "bg-gray-200 text-gray-600",
     note: "Updated 2 hours ago",
+    border: "border-l-4 border-blue-700",
     saved: false,
   },
 ];
@@ -208,3 +211,5 @@ export const useApp = () => {
   if (!ctx) throw new Error("useApp must be used inside AppProvider");
   return ctx;
 };
+
+
