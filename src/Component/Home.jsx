@@ -3,7 +3,7 @@ import {LayoutDashboard, FileText, BarChart2, BookOpen, Settings, Calendar, User
 import { useApp } from "../context/AppContext";
 import JobDetailModal from "./JobDetailModal";
 
-const Home = ({ searchQuery }) => {
+const Home = ({ searchQuery = "" }) => {
   
    const { user, jobs, notifications} = useApp();
 
