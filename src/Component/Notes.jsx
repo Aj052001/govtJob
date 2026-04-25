@@ -126,6 +126,7 @@ function NoteCard({ note }) {
 export default function Notes() {
   const [activeSubjectId, setActiveSubjectId] = useState("all");
   const [query, setQuery] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const q = query.trim().toLowerCase();
 
@@ -142,8 +143,19 @@ export default function Notes() {
     (!q || [FEATURED.badge, FEATURED.title, FEATURED.description].join(" ").toLowerCase().includes(q));
 
   return (
-    <div className="flex min-h-screen bg-white">
-      <aside className="w-[240px] min-h-screen border-r border-slate-200 bg-white flex flex-col">
+    <div className="flex min-h-screen bg-white relative">
+
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 bg-black/40 z-20 sm:hidden" onClick={() => setSidebarOpen(false)} />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`
+        fixed sm:static top-0 left-0 h-full z-30 w-[240px] border-r border-slate-200 bg-white flex flex-col
+        transition-transform duration-300 sm:translate-x-0
+        ${sidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"}
+      `}>
         <div className="p-4 border-b border-slate-200">
           <h3 className="text-sm font-semibold text-[#1d212b]">Subject Filters</h3>
           <p className="text-xs text-[#65758b]">Browse by category</p>
@@ -187,10 +199,40 @@ export default function Notes() {
         </div>
       </aside>
 
-      <main className="flex-1 px-5 sm:px-8 py-6">
+      <main className="flex-1 px-4 sm:px-8 py-6 min-w-0">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-6">
-            <h1 className="text-2xl font-bold text-[#1d212b] mb-1">Current Study Notes</h1>
+          <div className="mb-5">
+            {/* Mobile top bar */}
+            <div className="flex items-center gap-3 mb-4 sm:hidden">
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="flex items-center gap-2 px-3 py-2 border border-slate-200 rounded-lg text-sm font-medium text-[#1d212b] hover:bg-[#f3f5f7] transition"
+              >
+                <FileText size={16} className="text-[#65758b]" /> Filters
+              </button>
+              <span className="text-sm text-[#65758b]">
+                {SUBJECTS.find(s => s.id === activeSubjectId)?.label}
+              </span>
+            </div>
+
+            {/* Mobile horizontal subject tabs */}
+            <div className="flex gap-2 overflow-x-auto pb-2 sm:hidden scrollbar-hide">
+              {SUBJECTS.map(({ id, label, Icon }) => (
+                <button
+                  key={id}
+                  onClick={() => setActiveSubjectId(id)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap shrink-0 transition ${
+                    id === activeSubjectId
+                      ? "bg-[#076fed] text-white"
+                      : "bg-[#f3f5f7] text-[#65758b] hover:bg-slate-200"
+                  }`}
+                >
+                  <Icon size={13} /> {label}
+                </button>
+              ))}
+            </div>
+
+            <h1 className="text-xl sm:text-2xl font-bold text-[#1d212b] mb-1">Current Study Notes</h1>
             <p className="text-sm text-[#65758b]">
               Access professional-grade notes compiled by subject matter experts and top-rank holders
               to streamline your preparation.
