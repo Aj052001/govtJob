@@ -28,10 +28,10 @@ export default function Login() {
               The Authoritative Curator
             </span>
             <h1 className="text-5xl font-extrabold text-gray-900 leading-[1.15] mb-10">
-              Your future in{" "}
+              Your future in
               <span className="text-blue-600 underline decoration-blue-300 underline-offset-4">
                 public service
-              </span>{" "}
+              </span>
               starts here.
             </h1>
 
@@ -68,8 +68,8 @@ export default function Login() {
               ))}
             </div>
             <p className="text-xs text-gray-500">
-              Joined by{" "}
-              <span className="text-blue-600 font-semibold underline cursor-pointer">120k+ aspirants</span>{" "}
+              Joined by
+              <span className="text-blue-600 font-semibold underline cursor-pointer">120k+ aspirants</span>
               this month
             </p>
           </div>
@@ -147,7 +147,7 @@ export default function Login() {
             </div>
 
             <p className="text-center text-sm text-gray-500">
-              Don't have an account?{" "}
+              Don't have an account?
               <Link to="/register" className="text-blue-600 font-bold hover:underline">
                 Create Account
               </Link>
@@ -163,7 +163,7 @@ export default function Login() {
 
       {/* Footer */}
       <footer className="border-t border-gray-100 px-8 py-3 flex justify-between items-center text-xs text-gray-400">
-        <span>© 2024 GovCareer. Official Government Portal. Authorized Access Only.</span>
+        <span>© 2024 GovCareer. Official  Government Portal. Authorized Access Only.</span>
         <div className="flex gap-5">
           {["Privacy Policy", "Terms of Service", "Accessibility"].map((t) => (
             <span key={t} className="hover:text-gray-600 cursor-pointer transition">{t}</span>
